@@ -53,12 +53,17 @@ function bnToHex(bn) {
 
 async function f1() {
 
-    const difficulty = 17;
-    const nonce = '14219782092333040573';
-    const block_hash = '4531492e45e3b097aaff0c4b5d2ca7de3fc9d3ad1f2cb33d152333bbe3cace56';
+    const difficulty = 9;
+    const block_hash = 'b25872c03aa1bd57485438475b0b1a052671deee41b285742e03d76dc9b5bacd';
 
-    const res = await validateNonce(block_hash, nonce, difficulty);
-    console.log(res);
-  }
+    while(true) {
+      let nonce = Math.floor(Math.random() * 1000000000000);
+
+      const res = await validateNonce(block_hash, nonce, difficulty);
+      if (res == difficulty) {
+        console.log('matched difficulty with nonce: ' + nonce);
+      }
+    }
+}
   
 f1();
