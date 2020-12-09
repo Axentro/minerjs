@@ -30,7 +30,7 @@ function bnToHex(bn) {
   async function validateNonce(block_hash, block_nonce, difficulty) {
     nonce = bnToHex(block_nonce);
 
-    if (nonce.length % 2 == 1) {
+    if (nonce.length % 2 === 1) {
         nonce = '0' + nonce;
     };
 
@@ -53,14 +53,15 @@ function bnToHex(bn) {
 
 async function f1() {
 
-    const difficulty = 9;
+    const difficulty = 11;
     const block_hash = 'b25872c03aa1bd57485438475b0b1a052671deee41b285742e03d76dc9b5bacd';
 
     while(true) {
       let nonce = Math.floor(Math.random() * 1000000000000);
 
+    //   console.log(nonce)
       const res = await validateNonce(block_hash, nonce, difficulty);
-      if (res == difficulty) {
+      if (res === difficulty) {
         console.log('matched difficulty with nonce: ' + nonce);
       }
     }
