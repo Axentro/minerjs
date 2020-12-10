@@ -31,10 +31,6 @@ function bnToHex(bn) {
   async function validateNonce(block_hash, block_nonce, difficulty) {
     nonce = bnToHex(block_nonce);
 
-    if (nonce.length % 2 === 1) {
-        nonce = '0' + nonce;
-    };
-
     const salt = Buffer.from(nonce);
 
     const hash = await argon2.hash(block_hash, {
